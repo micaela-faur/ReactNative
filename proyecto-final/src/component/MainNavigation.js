@@ -12,8 +12,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const stack = createNativeStackNavigator(); 
 
 // importamos las screens 
-import Register from '../component/Register'; 
-import Login from '../component/Login'; 
+import Login from '../screens/Login'; 
+import Register from '../screens/Register'; 
+
 
 class MainNavigation extends Component{
     constructor(props){
@@ -73,7 +74,39 @@ class MainNavigation extends Component{
     render(){
         return(
             <NavigationContainer>
+                <Stack.Navigator>
+                    {this.state.login ? 
+                    <Stack.Group> 
+                        <Stack.Screen
+                            name= 'Menu'
+                            component= {Menu}
+                            options= {{hedearShown: false}}
+                            initialParams= {{logout: () => this.logout()}}
+                        /> 
+                        <Stack.Screen 
+                            name= 'Comentarios'
+                            component= {Comentarios}
+                        />
+                    </Stack.Group> : 
 
+                    <Stack.Group>
+                        <Stack.Screen 
+                            name= 'Login'
+                            component= {Login}
+                            options= {{hedearShown: false}}
+                            initialParams= {{login: (mail,pass) => this.login(mail,pass)}}
+                        />
+                        <Stack.Screen
+                            name= 'Register'
+                            options = {{hedearShown: false}}
+                            initialParams= {{register: (mail,pass, userName) => this.register(mail,pass, userName)}}
+                            children= {(navigationProps) => <Register errores= {this.state.registerError} {...navigationProps} />}
+                        />
+                    </Stack.Group>   
+                    
+                }
+
+                </Stack.Navigator>
             </NavigationContainer>
         )
     }

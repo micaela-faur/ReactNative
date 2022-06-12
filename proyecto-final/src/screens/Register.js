@@ -1,5 +1,6 @@
+// importamos react y componentes
 import React, {Component} from 'react'; 
-import {View, Text, TouchableOpacity, StleeSheet, TextInput, Flatlist, Image} from 'react-native'; 
+import {View, Text, TouchableOpacity, StyleSheet, TextInput, Flatlist, Image} from 'react-native'; 
 import {db, auth} from '../firebase/config'
 
 
