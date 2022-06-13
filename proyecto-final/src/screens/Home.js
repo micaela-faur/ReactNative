@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {db, auth} from '../firebase/config';
 
 // componentes de react 
-import {View, Text, TouchableOpacity, StyleSheet, TextInput, Flatlist, Image, ActivityIndicator} from 'react-native'; 
+import {View, Text, TouchableOpacity, StyleSheet, TextInput, FlatList, Image, ActivityIndicator} from 'react-native'; 
 
 // screens 
 import Post from './Post'
@@ -21,8 +21,9 @@ class Home extends Component{
     }
 
     componentDidMount(){
-        db.collection('posteos').orderBy('creaedAt' , 'desc').onSnapshot(
+        db.collection('posteos').orderBy('createdAt' , 'desc').onSnapshot(
             docs => {
+                console.log(docs)
                 let posteos = [];
                 docs.forEach( oneDoc => {
                     posteos.push({
@@ -30,9 +31,13 @@ class Home extends Component{
                         data: oneDoc.data()
                     })
                 })
+                console.log(posteos);
                 this.setState({
                     posteos: posteos
-                })
+
+                },
+                console.log(this.state.posteos))
+
             }
         )
     }
@@ -44,7 +49,7 @@ class Home extends Component{
             <View style={style.contenedor} > 
                 <Text> Posteos </Text>
                 { this.state.posteos.length > 0 ? 
-                <Flatlist 
+                <FlatList 
                     data= {this.state.posteos}
                     keyExtractor= {posteos => posteos.id} 
                     renderItem= {({item}) => <Post dataPost={item} {...this.props} /> }
