@@ -40,6 +40,7 @@ class Menu extends Component{
                     name= 'Profile' // nombre para identificar 
                     component= {Profile} //nombre de la screen a la que queres navegar 
                     options= {{tabBarIcon: () => <FontAwesome name='photo' size={24} color='black' />}}
+                    initialParams= {{logout: () => this.props.route.params.logout()}}
                 />
                 <Tab.Screen
                     name= 'NewPost' // nombre para identificar 

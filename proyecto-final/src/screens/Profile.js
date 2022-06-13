@@ -17,10 +17,14 @@ class Profile extends Component{
               
           }
       }
+      
+
       render(){
           return(
               <View>
-
+                  <TouchableOpacity onPress= {()=> this.props.route.params.logout()} >
+                      <Text> Cerrar Sesion </Text>
+                    </TouchableOpacity> 
               </View>
           )
       }

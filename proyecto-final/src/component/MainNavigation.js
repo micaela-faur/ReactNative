@@ -81,7 +81,7 @@ class MainNavigation extends Component{
                         <Stack.Screen
                             name= "Menu"
                             component= { Menu }
-                            options= {{hedearShown: false}}
+                            options= {{headerShown: false}}
                             initialParams= {{logout: () => this.logout()}}
                         /> 
                         <Stack.Screen 
@@ -94,12 +94,12 @@ class MainNavigation extends Component{
                         <Stack.Screen 
                             name= 'Login'
                             component= {Login}
-                            options= {{hedearShown: false}}
+                            options= {{headerShown: false}}
                             initialParams= {{login: (mail,pass) => this.login(mail,pass)}}
                         />
                         <Stack.Screen
                             name= 'Register'
-                            options = {{hedearShown: false}}
+                            options = {{headerShown: false}}
                             initialParams= {{register: (mail,pass, userName) => this.register(mail,pass, userName)}}
                             children= {(navigationProps) => <Register errores= {this.state.registerError} {...navigationProps} />}
                         />
