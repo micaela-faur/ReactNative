@@ -9,12 +9,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // guardamos la ejecucion de stack
-const stack = createNativeStackNavigator(); 
+const Stack = createNativeStackNavigator(); 
 
 // importamos las screens 
 import Login from '../screens/Login'; 
 import Register from '../screens/Register'; 
-
+import Menu from './Menu';
+import Comentarios from '../screens/Comentarios';
 
 class MainNavigation extends Component{
     constructor(props){
@@ -78,8 +79,8 @@ class MainNavigation extends Component{
                     {this.state.login ? 
                     <Stack.Group> 
                         <Stack.Screen
-                            name= 'Menu'
-                            component= {Menu}
+                            name= "Menu"
+                            component= { Menu }
                             options= {{hedearShown: false}}
                             initialParams= {{logout: () => this.logout()}}
                         /> 

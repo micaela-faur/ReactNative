@@ -43,11 +43,15 @@ class Home extends Component{
         return(
             <View style={style.contenedor} > 
                 <Text> Posteos </Text>
+                { this.state.posteos.length > 0 ? 
                 <Flatlist 
                     data= {this.state.posteos}
                     keyExtractor= {posteos => posteos.id} 
                     renderItem= {({item}) => <Post dataPost={item} {...this.props} /> }
-                />
+                
+                /> :
+                <ActivityIndicator size= 'large' color= 'green' /> 
+            }
             </View>
         )
     }

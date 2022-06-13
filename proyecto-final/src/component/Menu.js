@@ -14,7 +14,7 @@ import NewPost from '../screens/NewPost'
 import { TabActions } from '@react-navigation/native';
 
 // guardar la ejecuccion de createBottomTabNavigator
-const tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 class Menu extends Component{
     constructor(props){
