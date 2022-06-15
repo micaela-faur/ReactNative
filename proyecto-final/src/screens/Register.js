@@ -26,34 +26,38 @@ class Register extends Component{
         return(
             <View style={styles.contenedor}>
 
-                <Text> Registrate aqui: </Text>
+                <Text style={styles.titulo} > Registrate aqui: </Text>
+                <View style={styles.formContenedor}> 
+                    <TextInput 
+                        style={styles.formulario}
+                        keyboardType='email-address'
+                        placeholder='email'
+                        onChangeText={text => this.setState({email: text})}
+                    />
 
-                <TextInput style={styles.formulario}
-                    keyboardType='email-address'
-                    placeholder='email'
-                    onChangeText={text => this.setState({email: text})}
-                />
+                    <TextInput 
+                        style={styles.formulario}
+                        keyboardType='default'
+                        placeholder='user-name'
+                        onChangeText={text => this.setState({name: text})}
+                    />
 
-                <TextInput style={styles.input}
-                    keyboardType='default'
-                    placeholder='user-name'
-                    onChangeText={text => this.setState({name: text})}
-                />
+                    <TextInput  
+                        style={styles.formulario}
+                        keyboardType='default'
+                        placeholder='password'
+                        secureTextEntry= {true}
+                        onChangeText={text => this.setState({password: text})}
+                    />
 
-                <TextInput  style={styles.boton}
-                    keyboardType='default'
-                    placeholder='password'
-                    secureTextEntry= {true}
-                    onChangeText={text => this.setState({password: text})}
-                />
+                    <TouchableOpacity style={styles.boton}  onPress={()=> this.register(this.state.email, this.state.password)}>
+                        <Text style={styles.textoBoton} > Registrar </Text>
+                    </TouchableOpacity>
 
-                <TouchableOpacity style={styles.registrar}  onPress={()=> this.register(this.state.email, this.state.password)}>
-                    <Text> Registrar </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.registrada} onPress={ ()=>this.props.navigation.navigate('Login') }>
-                    <Text>Ya estoy registrada</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity style={styles.boton} onPress={ ()=>this.props.navigation.navigate('Login') }>
+                        <Text style={styles.textoBoton} >Ya estoy registrada</Text>
+                    </TouchableOpacity>
+                </View>
 
             </View>
             
@@ -64,38 +68,37 @@ class Register extends Component{
 
 const styles = StyleSheet.create({
     formulario: {
-        padding: 10, 
-        margin: 20,
-        borderColor: "#ccc", 
-    }, 
-    input:{
-        height: 20, 
-        padding: 20,
-        borderColor: "#ccc", 
-        margin: 10
-    }, 
-    boton:{
-        padding: 10, 
-        margin: 20,
-        borderColor: "#ccc", 
-    }, 
-    contenedor:{
-        alignItems: "center", 
+        borderColor: '#dcdcdc',
+        borderWidth: 1,
+        borderRadius: 2, 
+        padding: 10,
         margin: 20, 
     }, 
-    registrar:{
-        padding: 5, 
-        margin: 5,
-        width: 100,
-        backgroundColor: "#D2CECD", 
-        textAlign: "center",
+    boton:{
+        borderRadius: 2, 
+        padding: 3, 
+        backgroundColor: 'green', 
+        margin: 10, 
+        textAlign: 'center'
     }, 
-    registrada:{
-        padding: 5, 
-        margin: 5,
-        width: 150,
-        backgroundColor: "#D2CECD", 
-        textAlign: "center"
+    contenedor:{
+        paddingHorizontal: 10,
+        backgroundColor: '#E2C5EB',
+        height: '100%', 
+        alignItems: 'center'
+    }, 
+    formContenedor:{
+        backgroundColor: 'white',
+        boxShadow: 'rgb(80 80 80) 0px 0px 9px 9px',
+        margin: 50, 
+        padding:10
+    }, 
+    textoBoton:{
+        color: '#fff',
+    }, 
+    titulo:{
+        marginTop: 20, 
+        fontSize: 30
     }
 })
 

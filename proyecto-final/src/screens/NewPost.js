@@ -68,27 +68,27 @@ class NewPost extends Component{
 
 const style = StyleSheet.create({
     contenedor:{
-paddingHorizontal: 10,
-marginTop: 10,
-height: '80%'
+        paddingHorizontal: 10,
+        marginTop: 10,
+        height: '80%'
     },
     titulo:{
-marginBottom: 20
+        marginBottom: 20
     },
     campo:{
-borderColor: '#dcdcdc',
-borderWidth: 1,
-borderRadius: 2,
-padding: 3,
-marginBottom: 8,
+        borderColor: '#dcdcdc',
+        borderWidth: 1,
+        borderRadius: 2,
+        padding: 3,
+        marginBottom: 8,
     },
     boton:{
-borderRadius: 2,
-padding: 3,
-backgroundColor: 'green'
+        borderRadius: 2,
+        padding: 3,
+        backgroundColor: 'green'
     },
     textoBoton:{
-color: '#fff'
+        color: '#fff'
     }
 })
 
