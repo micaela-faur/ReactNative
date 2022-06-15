@@ -11,7 +11,11 @@ import {View, Text, TouchableOpacity, StyleSheet, TextInput, FlatList, Image, Ac
 import firebase from 'firebase';
 
 // importamos iconos
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
+
+
+
+
 
 
 class Comentarios extends Component{

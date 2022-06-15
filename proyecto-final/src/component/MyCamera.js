@@ -80,7 +80,7 @@ class MyCamera extends Component{
                      ref = {metodosDeCamera => this.metodosDeCamera = metodosDeCamera}
                    />
                    <TouchableOpacity style = {style.boton} onPress = {()=> this.sacarFoto()}>
-                       <Text><Entypo name="camera" size={24} color="black" /></Text>
+                       <Text> <Entypo name="camera" size={24} color="black" /> </Text>
                    </TouchableOpacity>
                </View>
                :
