@@ -47,7 +47,7 @@ class Home extends Component{
     render(){
         return(
             <View style={style.contenedor} > 
-                <Text> Posteos </Text>
+                <Text style = {style.titulo}> Posteos </Text>
                 { this.state.posteos.length > 0 ? 
                 <FlatList 
                     data= {this.state.posteos}
@@ -68,7 +68,18 @@ class Home extends Component{
 const style = StyleSheet.create({
     contenedor: {
         flex: 1, 
-    }
+        alignItems: 'center'
+    },
+    titulo:{
+        padding: '5%'
+    },
+    boton: {
+    borderRadius: 4, 
+    padding:7, 
+    backgroundColor: '#cdcdcd', 
+    margin: 20, 
+    textAlign: 'center'
+   }
 })
 
 

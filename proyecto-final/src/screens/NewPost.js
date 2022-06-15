@@ -43,8 +43,7 @@ class NewPost extends Component{
           return(
               <View style= {style.contenedor}>
                   { this.state.mostrarCamara ? 
-                   <MyCamera 
-                    onImageUpload={url => this.onImageUpload(url)}
+                   <MyCamera style={style.camara} onImageUpload={url => this.onImageUpload(url)}
                   /> 
                   : 
                 <View> 
@@ -70,7 +69,8 @@ const style = StyleSheet.create({
     contenedor:{
         paddingHorizontal: 10,
         marginTop: 10,
-        height: '80%'
+        height: '100%'
+        
     },
     titulo:{
         marginBottom: 20
@@ -89,6 +89,9 @@ const style = StyleSheet.create({
     },
     textoBoton:{
         color: '#fff'
+    },
+    camara:{
+        height: '50%'
     }
 })
 

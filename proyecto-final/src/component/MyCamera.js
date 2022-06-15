@@ -10,6 +10,9 @@ import {Camera} from 'expo-camera';
 // importamos el storage de firebase
 import {db, storage} from '../firebase/config';
 
+// importamos iconos
+import { Entypo } from '@expo/vector-icons'; 
+
 class MyCamera extends Component{
     constructor(props){
         super(props)
@@ -77,7 +80,7 @@ class MyCamera extends Component{
                      ref = {metodosDeCamera => this.metodosDeCamera = metodosDeCamera}
                    />
                    <TouchableOpacity style = {style.boton} onPress = {()=> this.sacarFoto()}>
-                       <Text>Sacar Foto</Text>
+                       <Text><Entypo name="camera" size={24} color="black" /></Text>
                    </TouchableOpacity>
                </View>
                :
@@ -108,12 +111,12 @@ const style = StyleSheet.create({
         height: '70%'
     },
     boton: {
-        height: '20%',
-        borderColor: '#ccc',
-        borderWidth: 1,
-        padding: 5,
+        borderColor: '#dcdcdc',
+        borderWidth: 3,
+        padding: 15,
         borderRadius: 4,
-        marginTop: 20
+        marginTop: 20,
+        textAlign: 'center'
     },
     preview:{
         height: '80%'

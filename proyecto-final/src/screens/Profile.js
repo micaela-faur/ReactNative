@@ -22,13 +22,26 @@ class Profile extends Component{
       render(){
           return(
               <View>
-                  <TouchableOpacity onPress= {()=> this.props.route.params.logout()} >
-                      <Text> Cerrar Sesion </Text>
+                  <TouchableOpacity style ={style.contenedor} onPress= {()=> this.props.route.params.logout()} >
+                      <Text style ={style.boton} > Cerrar Sesion </Text>
                     </TouchableOpacity> 
               </View>
           )
       }
 }
+
+const style = StyleSheet.create({
+    contenedor:{
+       alignItems: 'center' 
+    },
+    boton: {
+        borderRadius: 4, 
+        padding:7, 
+        backgroundColor: 'red', 
+        margin: 20, 
+        textAlign: 'center'
+    }
+})
 
 export default Profile;
 

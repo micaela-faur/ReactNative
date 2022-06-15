@@ -9,6 +9,11 @@ import {View, Text, TouchableOpacity, StyleSheet, TextInput, Flatlist, Image, Ac
 
 // importamos firebase
 import firebase from 'firebase';
+import { color } from 'react-native-reanimated';
+
+//importamos i
+import { AntDesign } from '@expo/vector-icons'; 
+
 
 class Post extends Component{
     constructor(props){
@@ -52,22 +57,24 @@ class Post extends Component{
         }))
         .catch(error => console.log (error))
     }
+
+
     render(){
         return(
          <View style={style.contenedor}>
-            <Text> Posteo de: {this.props.dataPost.data.owner} </Text>
+            <Text style = {style.texto}>Posteo de: {this.props.dataPost.data.owner} </Text>
             <Text>Descripcion: {this.props.dataPost.data.descripcion} </Text>
             <Text>Likes: {this.state.cantDeLikes} </Text>
             {
                 this.state.myLike ?
-                <TouchableOpacity onPress={()=>this.borrandoLike()}> 
-                    <Text> Deslikear</Text>
+                <TouchableOpacity style={style.boton} onPress={()=>this.borrandoLike()}> 
+                    <Text > <AntDesign name="heart" size={24} color="black" /></Text>
                 </TouchableOpacity>    :       
-                <TouchableOpacity onPress={()=> this.agregarLike()}> 
-                <Text> Likear</Text>
+                <TouchableOpacity style={style.boton} onPress={()=> this.agregarLike()}> 
+                <Text> <AntDesign name="hearto" size={24} color="black" /></Text>
             </TouchableOpacity> 
             }
-            <TouchableOpacity onPress= {()=> this.props.navigation.navigate('Comentarios', { id: this.props.dataPost.id, name: this.props.dataPost.owner})}>
+            <TouchableOpacity style={style.boton} onPress= {()=> this.props.navigation.navigate('Comentarios', { id: this.props.dataPost.id, name: this.props.dataPost.owner})}>
                 <Text>Ver comentarios</Text>
             </TouchableOpacity>
 
@@ -86,6 +93,16 @@ const style = StyleSheet.create({
     },
     deslike:{
 
+    },
+    boton:{
+        borderRadius: 4, 
+        padding:7, 
+        backgroundColor: '#cdcdcd', 
+        margin: 5, 
+        textAlign: 'center'  
+    },
+    texto: {
+    
     }
 })
 

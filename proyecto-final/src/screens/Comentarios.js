@@ -10,6 +10,10 @@ import {View, Text, TouchableOpacity, StyleSheet, TextInput, FlatList, Image, Ac
 // importamos firebase
 import firebase from 'firebase';
 
+// importamos iconos
+import { AntDesign } from '@expo/vector-icons'; 
+
+
 class Comentarios extends Component{
       constructor(props){
           super(props)
@@ -61,9 +65,9 @@ class Comentarios extends Component{
             data={this.state.comentarios}
             keyExtractor= {posteos => posteos.createdAt}
             renderItem= {({item})=> 
-            <View> 
-                <Text>Comentario: {item.text} </Text>
-                <Text>Usuario: {item.owner} </Text>
+            <View>
+                <Text><AntDesign name="user" size={24} color="black" />{item.owner} </Text> 
+                <Text>Comentó: {item.text} </Text>
             </View>
              }
             /> :
