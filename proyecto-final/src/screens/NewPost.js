@@ -10,13 +10,18 @@ import {View, Text, TouchableOpacity, StyleSheet, TextInput, FlatList, Image, Ac
 // importamos firebase
 import firebase from 'firebase';
 
+// importamos la camara
+import MyCamera from '../component/MyCamera';
+
 class NewPost extends Component{
       constructor(props){
           super(props)
           this.state={
               comentarios: [],
               likes:[],
-              descripcion: ''
+              descripcion: '',
+              mostrarCamara: true,
+              url: ''
           }
       }
 
@@ -37,18 +42,25 @@ class NewPost extends Component{
       render(){
           return(
               <View style= {style.contenedor}>
-            <Text  style= {style.titulo}>Nuevo Posteo </Text>
-            <TextInput  
-            style= {style.campo} 
-            keyboardType='default'
-            placeholder='descripcion'
-            onChangeText={text => this.setState({descripcion: text})}
-            multiline
-            />
-            <TouchableOpacity  style= {style.boton} onPress={()=> this.guardarPosteos()}>
-                <Text  style= {style.textoBoton}>Guardar Posteo</Text>
-            </TouchableOpacity>
-              </View>
+                  { this.state.mostrarCamara ? 
+                   <MyCamera 
+                    onImageUpload={url => this.onImageUpload(url)}
+                  /> 
+                  : 
+                <View> 
+                    <Text  style= {style.titulo}>Nuevo Posteo </Text>
+                        <TextInput  
+                        style= {style.campo} 
+                        keyboardType='default'
+                        placeholder='descripcion'
+                        onChangeText={text => this.setState({descripcion: text})}
+                        multiline
+                        />
+                        <TouchableOpacity  style= {style.boton} onPress={()=> this.guardarPosteos()}>
+                            <Text  style= {style.textoBoton}>Guardar Posteo</Text>
+                        </TouchableOpacity>
+                </View> }
+                </View>
           )
       }
 }
@@ -57,7 +69,8 @@ class NewPost extends Component{
 const style = StyleSheet.create({
     contenedor:{
 paddingHorizontal: 10,
-marginTop: 10
+marginTop: 10,
+height: '80%'
     },
     titulo:{
 marginBottom: 20
