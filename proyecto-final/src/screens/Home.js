@@ -50,6 +50,7 @@ class Home extends Component{
                 <Text style = {style.titulo}> Posteos </Text>
                 { this.state.posteos.length > 0 ? 
                 <FlatList 
+                    style= {style.posteos}
                     data= {this.state.posteos}
                     keyExtractor= {posteos => posteos.id} 
                     renderItem= {({item}) => <Post dataPost={item} {...this.props} /> }
@@ -68,10 +69,12 @@ class Home extends Component{
 const style = StyleSheet.create({
     contenedor: {
         flex: 1, 
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#E2C5EB',
     },
     titulo:{
-        padding: '5%'
+        marginTop: 10, 
+        fontSize: 30
     },
     boton: {
     borderRadius: 4, 
@@ -79,6 +82,12 @@ const style = StyleSheet.create({
     backgroundColor: '#cdcdcd', 
     margin: 20, 
     textAlign: 'center'
+   }, 
+   posteos:{
+       backgroundColor: 'white', 
+       boxShadow: 'rgb(80 80 80) 0px 0px 9px 9px', 
+       width: '60%', 
+       margin: 30
    }
 })
 
