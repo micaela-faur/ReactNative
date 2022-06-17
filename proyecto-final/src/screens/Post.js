@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {db, auth} from '../firebase/config';
 
 // componentes de react 
-import {View, Text, TouchableOpacity, StyleSheet, TextInput, Flatlist, Image, ActivityIndicator} from 'react-native'; 
+import {View, Text, TouchableOpacity, StyleSheet, TextInput, FlatList, Image, ActivityIndicator} from 'react-native'; 
 
 // importamos firebase
 import firebase from 'firebase';

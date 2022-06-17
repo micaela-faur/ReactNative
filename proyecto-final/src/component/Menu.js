@@ -11,6 +11,7 @@ import {FontAwesome} from '@expo/vector-icons';
 import Home from '../screens/Home'
 import Profile from '../screens/Profile'
 import NewPost from '../screens/NewPost'
+import Search from '../screens/Search';
 import { TabActions } from '@react-navigation/native';
 
 // guardar la ejecuccion de createBottomTabNavigator
@@ -36,6 +37,11 @@ class Menu extends Component{
                     component= {Home} //nombre de la screen a la que queres navegar 
                     options= {{tabBarIcon: () => <FontAwesome name='home' size={24} color='black' />}}
                 />
+                <Tab.Screen 
+                    name='Search' // nombre para identificar
+                    component= {Search} // nombre de ka screen a la que queres navegar
+                    options={{ tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> }}
+                /> 
                 <Tab.Screen
                     name= 'Profile' // nombre para identificar 
                     component= {Profile} //nombre de la screen a la que queres navegar 
