@@ -13,6 +13,8 @@ import { color } from 'react-native-reanimated';
 
 //importamos i
 import { AntDesign } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons'; 
+
 import Post from './Post';
 
 class Search extends Component {
@@ -52,22 +54,22 @@ class Search extends Component {
     render(){
         
         return(
-                <View>
-                    <Text>Posteos del usuario: {this.state.quienEs}</Text>
-                    <View style={styles.form}>
+                <View >
+                    <Text style={style.texto}>Posteos del usuario: {this.state.quienEs}</Text>
+                    <View style={style.form}>
                         <TextInput 
-                            style={styles.campo}
+                            style={style.campo}
                             keyboardType='default'
                             placeholder='email a buscar...'
                             value={this.state.email}
                             onChangeText={text => this.setState({ email: text})}
                         />  
                         <TouchableOpacity
-                            style={styles.boton} 
+                            style={style.boton} 
                             onPress={()=>this.busqueda(this.state.email)}
                             disabled= {this.state.email == '' ? true : false }
                             >
-                            <Text style={ styles.textoBoton}>Buscar</Text>
+                            <Text><FontAwesome name="search" size={24} color="black" /></Text>
                         </TouchableOpacity>                         
                     </View>
                     <FlatList 
@@ -83,10 +85,11 @@ class Search extends Component {
     }
 }
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
     contenedor:{
         flex:1,
-        padding:10
+        padding:10,
+        backgroundColor: '#E2C5EB',
     },
     form:{
         flex:1,
@@ -95,24 +98,28 @@ const styles = StyleSheet.create({
         marginHorizontal:20,
     },
     campo:{
-        borderColor: '#dcdcdc',
-        borderWidth: 1,
+        borderColor: '#cdcd',
+        borderWidth: 2,
         borderRadius: 2,
-        padding:3,
+        padding:5,
         marginBottom:8,
         width:'70%',
-        marginBottom: 0,
-        lineHeight:40,
+        marginBottom: 5,
+        lineHeight:100,
     },
     boton: {
         borderRadius: 2,
         padding:3,
-        backgroundColor: 'green',
+        backgroundColor: '#cdcd',
         width:'29%',
         textAlign: 'center',
     },
     textoBoton:{
         color: '#fff'
+    },
+    texto:{
+        textAlign:'center',
+        padding:'1%'
     }
 })
 

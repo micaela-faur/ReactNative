@@ -61,7 +61,8 @@ const style = StyleSheet.create({
         paddingHorizontal: 10,
         backgroundColor: '#E2C5EB',
         height: '100%', 
-        alignItems: 'center'
+        alignItems: 'center',
+        
     }, 
     titulo:{
         marginTop: 20, 

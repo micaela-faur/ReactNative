@@ -85,9 +85,10 @@ const style = StyleSheet.create({
    }, 
    posteos:{
        backgroundColor: 'white', 
-       boxShadow: 'rgb(80 80 80) 0px 0px 9px 9px', 
+       boxShadow: 'rgb(100 100 100) 0px 0px 3px 3px', 
        width: '60%', 
-       margin: 30
+       margin: 30,
+       padding:'1%'
    }
 })
 

@@ -69,7 +69,8 @@ const style = StyleSheet.create({
     contenedor:{
         paddingHorizontal: 10,
         marginTop: 10,
-        height: '100%'
+        height: '100%',
+        
         
     },
     titulo:{

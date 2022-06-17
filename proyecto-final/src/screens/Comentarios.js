@@ -83,7 +83,7 @@ class Comentarios extends Component{
             <TextInput 
             style= {style.campo}
             keyboardType= "default"
-            placeholder='Agregar un comentario'
+            placeholder ='Agrega tu comentario' 
             onChangeText={text => this.setState({ textoComentarios: text})}
             value = {this.state.textoComentarios}
             />
@@ -109,7 +109,8 @@ class Comentarios extends Component{
 const style = StyleSheet.create({
     contenedor: {
         paddingHorizontal: 10,
-        marginTop: 10
+        marginTop: 10,
+       
     },
     titulo: {
         marginBottom:20
@@ -128,10 +129,13 @@ const style = StyleSheet.create({
 
     },
     textoBoton:{
-        color:'#fff'
+        color:'#fff',
+        textAlign: 'center',
+        padding:'1%'
     },
     error:{
-        color: 'red'
+        color: 'red',
+        textAlign: 'center'
     }
 
 })
