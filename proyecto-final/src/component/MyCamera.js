@@ -61,6 +61,10 @@ class MyCamera extends Component{
       }
       
       eliminar(){
+          this.setState({
+              mostrarCamara: true,
+
+          })
 
 
       }
@@ -79,7 +83,7 @@ class MyCamera extends Component{
                      type= {Camera.Constants.Type.front}
                      ref = {metodosDeCamera => this.metodosDeCamera = metodosDeCamera}
                    />
-                   <TouchableOpacity style = {style.boton} onPress = {()=> this.sacarFoto()}>
+                   <TouchableOpacity style = {style.botonCamara} onPress = {()=> this.sacarFoto()}>
                        <Text> <Entypo name="camera" size={24} color="black" /> </Text>
                    </TouchableOpacity>
                </View>
@@ -108,18 +112,26 @@ class MyCamera extends Component{
 
 const style = StyleSheet.create({
     camara:{
-        height: '70%'
+        height: 500
     },
-    boton: {
+    botonCamara: {
         borderColor: '#dcdcdc',
         borderWidth: 3,
-        padding: 15,
+        padding: 5,
         borderRadius: 4,
-        marginTop: 20,
+        marginTop: 1,
         textAlign: 'center'
     },
     preview:{
         height: '80%'
+    },
+    boton:{
+        borderColor: '#dcdcdc',
+        borderWidth: 3,
+        padding: 5,
+        borderRadius: 4,
+        marginTop: 10,
+        textAlign: 'center'
     }
 
 })

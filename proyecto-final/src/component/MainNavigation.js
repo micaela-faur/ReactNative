@@ -47,19 +47,23 @@ class MainNavigation extends Component{
 
     register(mail,pass,userName){   // firebase registra por lo que cambia el login a true, se pasa al componente register como metodo, colocar el metodo de registracion de firebase
         auth.createUserWithEmailAndPassword(mail,pass)
-        .then(responseRegister => {console.log(responseRegister)}) // guarda el documento de la coleccion del usuario 
+        .then(responseRegister => {console.log(responseRegister) // guarda el documento de la coleccion del usuario 
         db.collection('usuarios').add({  // creamos la coleccion de los usuarios 
             email: mail, 
             userName: userName,
             createdAt: Date.now()
-        })
+        })})
         .then(responseUser => this.setState({
             login: true,
         }))
-        .catch(error=> console.log(error))  // se usa para mandarle el error al usuario 
-        .catch(error => {console.log(error); this.setState({
-            registerError: error.message,
+        .catch(error => {console.log(error.message); 
+            this.setState({
+                registerError: error.message,
         })})
+        
+        .catch(error=> console.log(error.message))  // se usa para mandarle el error al usuario
+        
+        
         
 
     }
@@ -101,8 +105,8 @@ class MainNavigation extends Component{
                         <Stack.Screen
                             name= 'Register'
                             options = {{headerShown: false}}
-                            initialParams= {{register: (mail,pass, userName) => this.register(mail,pass, userName)}}
-                            children= {(navigationProps) => <Register errores= {this.state.registerError} {...navigationProps} />}
+                            
+                            children= {(navigationProps) => <Register register={(mail,pass, userName) => this.register(mail,pass, userName) } errores= {this.state.registerError} {...navigationProps} />}
                         />
                     </Stack.Group>   
                     

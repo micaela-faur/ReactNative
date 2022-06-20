@@ -21,13 +21,15 @@ class Post extends Component{
         this.state={
             cantDeLikes: 0,
             myLike: false,
+            url: ''
         }
     }
     componentDidMount(){
         if(this.props.dataPost.data.likes.includes(auth.currentUser.email)){
             this.setState({
                 myLike: true,
-                cantDeLikes: this.props.dataPost.data.likes.length
+                cantDeLikes: this.props.dataPost.data.likes.length,
+                
             })
         }
     }
@@ -63,6 +65,11 @@ class Post extends Component{
         return(
          <View style={style.contenedor}>
             <Text style = {style.texto}>Posteo de: {this.props.dataPost.data.owner} </Text>
+             <Image
+                source={{uri: this.props.dataPost.data.url}}
+                resizeMode='cover'
+                style={style.imagen} 
+              /> 
             <Text>Descripcion: {this.props.dataPost.data.descripcion} </Text>
             <Text>Likes: {this.state.cantDeLikes} </Text>
             {
@@ -103,6 +110,10 @@ const style = StyleSheet.create({
     },
     texto: {
     
+    },
+    imagen:{
+        height: 400,
+
     }
 })
 

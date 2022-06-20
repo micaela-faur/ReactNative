@@ -24,6 +24,13 @@ class NewPost extends Component{
               url: ''
           }
       }
+      // guardar la url
+      onImageUpload(url){
+       this.setState({
+           url: url,
+           mostrarCamara: false
+       })
+      }
 
       guardarPosteos(){
           db.collection('posteos').add({
@@ -31,10 +38,12 @@ class NewPost extends Component{
               owner: auth.currentUser.email,
               descripcion: this.state.descripcion,
               likes:[],
-              comentarios:[]
+              comentarios:[],
+              url: this.state.url,
           })
           .then(response => this.setState({
-              descripcion:''
+              descripcion:'',
+              mostrarCamara: true
           },
           ()=> this.props.navigation.navigate('Home')))
           .catch(error => console.log(error))
@@ -69,8 +78,7 @@ const style = StyleSheet.create({
     contenedor:{
         paddingHorizontal: 10,
         marginTop: 10,
-        height: '100%',
-        
+        height: 400,
         
     },
     titulo:{
@@ -92,7 +100,7 @@ const style = StyleSheet.create({
         color: '#fff'
     },
     camara:{
-        height: '50%'
+        height: 400
     }
 })
 

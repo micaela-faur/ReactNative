@@ -28,9 +28,13 @@ class Search extends Component {
     }
     
     // Obtenemos info a partir de la búsqueda.
-    busqueda(email){ 
-        db.collection('posteos').where('owner', '==', email).onSnapshot(
+    busqueda(){ 
+        console.log(this.state.email);
+        
+        db.collection('posteos').where('owner', '==', this.state.email).onSnapshot(
             docs => {
+                console.log(docs);
+                
                 let posteos = [];
                 docs.forEach( oneDoc => {
                     posteos.push({
@@ -42,7 +46,7 @@ class Search extends Component {
                 this.setState({
                     posteos: posteos,
                     email:'',
-                    quienEs:email,
+                    quienEs: this.state.email
                 })
             }
         )
@@ -52,10 +56,11 @@ class Search extends Component {
 
 
     render(){
+        console.log(this.state.posteos);
         
         return(
                 <View >
-                    <Text style={style.texto}>Posteos del usuario: {this.state.quienEs}</Text>
+                    <Text style={style.texto}>Posteos del usuario: {this.state.email}</Text>
                     <View style={style.form}>
                         <TextInput 
                             style={style.campo}
@@ -66,14 +71,13 @@ class Search extends Component {
                         />  
                         <TouchableOpacity
                             style={style.boton} 
-                            onPress={()=>this.busqueda(this.state.email)}
+                            onPress={()=>this.busqueda()}
                             disabled= {this.state.email == '' ? true : false }
                             >
                             <Text><FontAwesome name="search" size={24} color="black" /></Text>
                         </TouchableOpacity>                         
                     </View> {
-                        this.state.posteos.email == this.state.email ?  
-                    
+                        this.state.posteos ?  
                      
                     <FlatList 
                         data={this.state.posteos}

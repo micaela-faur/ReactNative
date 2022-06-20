@@ -5,17 +5,39 @@ import React, {Component} from 'react';
 import {db, auth} from '../firebase/config';
 
 // componentes de react 
-import {View, Text, TouchableOpacity, StyleSheet, TextInput, Flatlist, Image, ActivityIndicator} from 'react-native'; 
+import {View, Text, TouchableOpacity, StyleSheet, TextInput, FlatList, Image, ActivityIndicator} from 'react-native'; 
+
+// importamos componente post
+import Post from '../screens/Post';
 
 
 class Profile extends Component{
       constructor(props){
           super(props)
           this.state={
+              posteos:[]
               
           }
       }
-      
+     componentDidMount(){
+         db.collection('posteos')
+         .where('owner', '==', auth.currentUser.email)
+         .onSnapshot(
+             (docs) => {
+                 let datosPosteo = [];
+                 docs.forEach(doc => {
+                     datosPosteo.push({
+                         id: doc.id,
+                         data: doc.data()
+                     })
+                 })
+                 this.setState({
+                     posteos: datosPosteo, 
+                     loading: false
+                 })
+             }
+         )
+     }   
 
       render(){
           console.log(auth.currentUser);
@@ -24,7 +46,19 @@ class Profile extends Component{
 
                 <View>
                     <Text>Mail: {auth.currentUser.email}</Text>
-                    <Text>name: {this.props.name}</Text>
+                    <Text>name: {this.props.userName}</Text>
+                    <Text>Publicaciones: {this.state.posteos.length} </Text>
+                    {this.state.posteos.length > 0 ? 
+                        <FlatList 
+                           data= {this.state.posteos}
+                           keyExtractor= {(posteos) => posteos.id.toString()}
+                           renderItem= {({item})=> <Post posteos={item}{...this.props} />}
+                        />
+                    : 
+                    <View> 
+                        <Text>No tenes ninguna publicacion</Text>
+                    </View> 
+                    }
                 </View>
 
                   <View style ={style.contenedor}>

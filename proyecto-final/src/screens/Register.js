@@ -15,14 +15,11 @@ class Register extends Component{
         }
     }
 
-    register(mail,pass){
-        auth.createUserWithEmailAndPassword(mail,pass)
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
-    }
 
 
     render(){
+        console.log(this.props);
+        
         return(
             <View style={styles.contenedor}>
 
@@ -50,7 +47,7 @@ class Register extends Component{
                         onChangeText={text => this.setState({password: text})}
                     />
 
-                    <TouchableOpacity style={styles.boton}  onPress={()=> this.register(this.state.email, this.state.password)}>
+                    <TouchableOpacity style={styles.boton}  onPress={()=> this.props.register(this.state.email, this.state.password)}>
                         <Text style={styles.textoBoton} > Registrar </Text>
                     </TouchableOpacity>
                     <Text>El error es: {this.props.errores}</Text> 
