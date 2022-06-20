@@ -7,8 +7,6 @@ import {db, auth} from '../firebase/config';
 // componentes de react 
 import {View, Text, TouchableOpacity, StyleSheet, TextInput, Flatlist, Image, ActivityIndicator} from 'react-native'; 
 
-// importamos firebase
-import firebase from 'firebase';
 
 class Profile extends Component{
       constructor(props){
@@ -20,8 +18,15 @@ class Profile extends Component{
       
 
       render(){
+          console.log(auth.currentUser);
           return(
               <View style ={style.fondo}>
+
+                <View>
+                    <Text>Mail: {auth.currentUser.email}</Text>
+                    <Text>name: {this.props.name}</Text>
+                </View>
+
                   <View style ={style.contenedor}>
                       <TouchableOpacity style ={style.boton} onPress= {()=> this.props.route.params.logout()} >
                       <Text style ={style.textoBoton} > Cerrar Sesion </Text>

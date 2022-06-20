@@ -53,7 +53,7 @@ class Register extends Component{
                     <TouchableOpacity style={styles.boton}  onPress={()=> this.register(this.state.email, this.state.password)}>
                         <Text style={styles.textoBoton} > Registrar </Text>
                     </TouchableOpacity>
-
+                    <Text>El error es: {this.props.errores}</Text> 
                     <TouchableOpacity style={styles.boton} onPress={ ()=>this.props.navigation.navigate('Login') }>
                         <Text style={styles.textoBoton} >Ya estoy registrada</Text>
                     </TouchableOpacity>

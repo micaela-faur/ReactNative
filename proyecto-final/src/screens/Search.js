@@ -71,14 +71,22 @@ class Search extends Component {
                             >
                             <Text><FontAwesome name="search" size={24} color="black" /></Text>
                         </TouchableOpacity>                         
-                    </View>
+                    </View> {
+                        this.state.posteos.email == this.state.email ?  
+                    
+                     
                     <FlatList 
                         data={this.state.posteos}
                         keyExtractor={post => post.id}
                         renderItem = { ({item}) => <Post dataPost={item} 
                         {...this.props} />}
-                    />
-                    
+                    /> 
+                    : 
+                    <View>
+                    <Text>No hay resultados para tu búsqueda </Text>    
+                    </View>
+                    }
+                 
                 </View>
 
         )

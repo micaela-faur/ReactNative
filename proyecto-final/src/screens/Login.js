@@ -20,7 +20,7 @@ class Login extends Component{
 
 
     render(){
-        return(
+        return( 
             <View style={style.contenedor}>
                 <Text style={style.titulo} > Login </Text>
                 <View style={style.contenedorForm} > 

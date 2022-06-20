@@ -69,7 +69,7 @@ class MyCamera extends Component{
     render(){
 
         return(
-            <View style = {style.camara}>
+            <View>
               { this.state.permisos ? 
                 this.state.mostrarCamara ?   
             

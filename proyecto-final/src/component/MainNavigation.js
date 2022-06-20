@@ -73,6 +73,7 @@ class MainNavigation extends Component{
     }
 
     render(){
+        console.log("en el render del menu:" + this.state.registerError );
         return(
             <NavigationContainer>
                 <Stack.Navigator>
