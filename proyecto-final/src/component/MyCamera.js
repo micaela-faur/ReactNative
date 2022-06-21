@@ -112,7 +112,7 @@ class MyCamera extends Component{
 
 const style = StyleSheet.create({
     camara:{
-        height: 500
+        height: 300
     },
     botonCamara: {
         borderColor: '#dcdcdc',

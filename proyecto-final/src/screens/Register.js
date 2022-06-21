@@ -10,7 +10,7 @@ class Register extends Component{
         super(props)
         this.state = {
             email: " ", 
-            name: " ", 
+            userName: " ", 
             password: " " 
         }
     }
@@ -36,7 +36,7 @@ class Register extends Component{
                         style={styles.formulario}
                         keyboardType='default'
                         placeholder='user-name'
-                        onChangeText={text => this.setState({name: text})}
+                        onChangeText={text => this.setState({userName: text})}
                     />
 
                     <TextInput  

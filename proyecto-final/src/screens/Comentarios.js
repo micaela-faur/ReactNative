@@ -60,47 +60,47 @@ class Comentarios extends Component{
     
       render(){
           return(
-              <View style={style.contenedor} >
-                <Text style={style.titulo}> Comentarios </Text>
+          
+          <View style={style.contenedor}>
+              <View style={style.fondo}> 
+              <Text style={style.titulo}> Comentarios </Text>
                 {/*  Renderizamos la lista de comentarios */ }
-               { this.state.comentarios != '' ?
-            <FlatList
-            style= {style.campo}
-            data={this.state.comentarios}
-            keyExtractor= {posteos => posteos.createdAt}
-            renderItem= {({item})=> 
-            <View>
-                <Text><AntDesign name="user" size={24} color="black" />{item.owner} </Text> 
-                <Text>Comentó: {item.text} </Text>
-            </View>
-             }
-            /> :
-            
-            <Text style={style.titulo} > No hay comentarios</Text>
-            }
-
-             {/*  creamos un formulario para cargar comentarios */ }
-            <TextInput 
-            style= {style.campo}
-            keyboardType= "default"
-            placeholder ='Agrega tu comentario' 
-            onChangeText={text => this.setState({ textoComentarios: text})}
-            value = {this.state.textoComentarios}
-            />
-        
-            {
-                this.state.textoComentarios == '' ? <View> 
-                <TouchableOpacity style={style.boton} >
-                <Text style={style.textoBoton}> Comentar </Text>
-            </TouchableOpacity>
-            <Text style={style.error} > El comentario esta vacio. Por favor, ingrese su comentario</Text> 
-            </View> :
-            
-            <TouchableOpacity style={style.boton} onPress={()=> this.agregarComentarios()}>
-                <Text style={style.textoBoton}> Comentar </Text>
-            </TouchableOpacity> }
-    
-               
+                { this.state.comentarios != '' ?
+                <FlatList
+                    style= {style.campo}
+                    data={this.state.comentarios}
+                    keyExtractor= {posteos => posteos.createdAt}
+                    renderItem= {({item})=> <View> <Text> <AntDesign name="user" size={24} color="black" />{item.owner} </Text> 
+                    <Text>Comentó: {item.text} </Text> </View>}
+                /> :
+                
+                <Text style={style.titulo} > No hay comentarios</Text>
+                }
+                
+                {/*  creamos un formulario para cargar comentarios */ }
+                
+                <TextInput 
+                    style= {style.campo}
+                    keyboardType= "default"
+                    placeholder ='Agrega tu comentario' 
+                    onChangeText={text => this.setState({ textoComentarios: text})}
+                    value = {this.state.textoComentarios}
+                />
+                
+                { this.state.textoComentarios == '' ? 
+                    <View> 
+                        <TouchableOpacity style={style.boton} >
+                            <Text style={style.textoBoton}> Comentar </Text>
+                        </TouchableOpacity>
+                        <Text style={style.error} > El comentario esta vacio. Por favor, ingrese su comentario</Text> 
+                    </View> 
+                    :
+                    
+                    <TouchableOpacity style={style.boton} onPress={()=> this.agregarComentarios()}>
+                        <Text style={style.textoBoton}> Comentar </Text>
+                    </TouchableOpacity> 
+                }
+                </View>
             </View>
           )
       }
@@ -110,6 +110,7 @@ const style = StyleSheet.create({
     contenedor: {
         paddingHorizontal: 10,
         marginTop: 10,
+        backgroundColor: '#E2C5EB'
        
     },
     titulo: {
@@ -136,6 +137,12 @@ const style = StyleSheet.create({
     error:{
         color: 'red',
         textAlign: 'center'
+    },
+    fondo:{
+        backgroundColor: 'white',
+        boxShadow: 'rgb(80 80 80) 0px 0px 9px 9px',
+        margin: 50, 
+        padding:10
     }
 
 })

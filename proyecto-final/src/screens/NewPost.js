@@ -50,25 +50,27 @@ class NewPost extends Component{
       }
       render(){
           return(
-              <View style= {style.contenedor}>
+            <View style= {style.contenedor}>
                   { this.state.mostrarCamara ? 
                    <MyCamera style={style.camara} onImageUpload={url => this.onImageUpload(url)}
                   /> 
                   : 
-                <View> 
-                    <Text  style= {style.titulo}>Nuevo Posteo </Text>
-                        <TextInput  
-                        style= {style.campo} 
-                        keyboardType='default'
-                        placeholder='descripcion'
-                        onChangeText={text => this.setState({descripcion: text})}
-                        multiline
-                        />
-                        <TouchableOpacity  style= {style.boton} onPress={()=> this.guardarPosteos()}>
-                            <Text  style= {style.textoBoton}>Guardar Posteo</Text>
-                        </TouchableOpacity>
+                <View style= {style.fondoDescripcion}> 
+                    <View style= {style.campoDescripcion}> 
+                        <Text  style= {style.titulo}>Nuevo Posteo </Text>
+                            <TextInput  
+                            style= {style.campo} 
+                            keyboardType='default'
+                            placeholder='descripcion'
+                            onChangeText={text => this.setState({descripcion: text})}
+                            multiline
+                            />
+                            <TouchableOpacity  style= {style.boton} onPress={()=> this.guardarPosteos()}>
+                                <Text  style= {style.textoBoton}>Guardar Posteo</Text>
+                            </TouchableOpacity>
+                    </View> 
                 </View> }
-                </View>
+            </View>
           )
       }
 }
@@ -101,6 +103,16 @@ const style = StyleSheet.create({
     },
     camara:{
         height: 400
+    },
+    campoDescripcion:{
+        backgroundColor: 'white',
+        boxShadow: 'rgb(80 80 80) 0px 0px 9px 9px',
+        margin: 50, 
+        padding:10
+    },
+    fondoDescripcion:{
+        backgroundColor: '#E2C5EB',
+        height: '100%'
     }
 })
 

@@ -34,7 +34,6 @@ class Search extends Component {
         db.collection('posteos').where('owner', '==', this.state.email).onSnapshot(
             docs => {
                 console.log(docs);
-                
                 let posteos = [];
                 docs.forEach( oneDoc => {
                     posteos.push({
@@ -42,16 +41,13 @@ class Search extends Component {
                         data: oneDoc.data()
                     })
                 })
-
                 this.setState({
                     posteos: posteos,
                     email:'',
                     quienEs: this.state.email
                 })
             }
-        )
-
-        
+        )   
     }
 
 
@@ -82,8 +78,7 @@ class Search extends Component {
                     <FlatList 
                         data={this.state.posteos}
                         keyExtractor={post => post.id}
-                        renderItem = { ({item}) => <Post dataPost={item} 
-                        {...this.props} />}
+                        renderItem = { ({item}) => <Post dataPost={item} {...this.props} />}
                     /> 
                     : 
                     <View>
