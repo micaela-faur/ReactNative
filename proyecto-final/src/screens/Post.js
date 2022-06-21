@@ -64,14 +64,27 @@ class Post extends Component{
     render(){
         return(
          <View style={style.contenedor}>
-            <Text style = {style.texto}>Posteo de: {this.props.dataPost.data.owner} </Text>
+             <Text> 
+                <Text style = {style.texto}> Posteo de:  </Text>
+                <Text>{this.props.dataPost.data.owner} </Text>
+             </Text>
+            
              <Image
                 source={{uri: this.props.dataPost.data.url}}
                 resizeMode='cover'
                 style={style.imagen} 
               /> 
-            <Text>Descripcion: {this.props.dataPost.data.descripcion} </Text>
-            <Text>Likes: {this.state.cantDeLikes} </Text>
+              <Text> 
+                  <Text style = {style.texto}> Descripcion:  </Text>
+                  <Text> {this.props.dataPost.data.descripcion} </Text>
+              </Text>
+
+              <Text> 
+                  <Text style = {style.texto}> Likes:  </Text>
+                  <Text> {this.state.cantDeLikes} </Text>
+              </Text>
+
+            
             {
                 this.state.myLike ?
                 <TouchableOpacity style={style.boton} onPress={()=>this.borrandoLike()}> 
@@ -109,7 +122,7 @@ const style = StyleSheet.create({
         textAlign: 'center'  
     },
     texto: {
-    
+        fontWeight: 'bold'
     },
     imagen:{
         height: 400,

@@ -92,7 +92,7 @@ class MyCamera extends Component{
                    <Image
                    style = {style.preview}
                    source = {{uri: this.state.url}}
-                   resizeMode = 'cover'
+                   resizeMode = 'contain'
                     />
                     <TouchableOpacity style = {style.boton} onPress = { () => this.guardarFoto()}>
                         <Text>Guardar Foto</Text>

@@ -50,7 +50,7 @@ class Profile extends Component{
                 });
                 console.log(docs)
                 this.setState({
-                    userName: postProfile[0].data.userName,
+                    // userName: postProfile[0].data.userName,
                     loading: false
                 });
             }
@@ -63,35 +63,51 @@ class Profile extends Component{
               <View style ={style.fondo}>
 
                 <View>
-                    <Text>Mail: {auth.currentUser.email}</Text>
-                    <Text>Ultima fecha de ingreso: {auth.currentUser.metadata.lastSignInTime}</Text>
-                    <Text>Publicaciones: {this.state.posteos.length} </Text>
+                    <Text style={style.cuadroTexto}>
+                        <Text style={style.texto} > Mail:  </Text> 
+                        <Text> {auth.currentUser.email} </Text>
+                    </Text>
+
+                    <Text style={style.cuadroTexto}> 
+                        <Text style={style.texto} > Ultima fecha de ingreso: </Text>
+                        <Text> {auth.currentUser.metadata.lastSignInTime} </Text> 
+                    </Text>
+                    
+                    {/* <Text>Nombre: {auth.currentUser.displayName}</Text> */}
+                    <Text style={style.cuadroTexto}> 
+                        <Text style={style.texto} > Publicaciones:  </Text>
+                        <Text> {this.state.posteos.length} </Text>
+                    </Text>
+
                     {this.state.posteos.length > 0 ? 
-                        <FlatList 
-                           data= {this.state.posteos}
-                           keyExtractor= {(posteos) => posteos.id.toString()}
-                           renderItem= {({item})=> <Post posteos={item}{...this.props} />}
-                        />
+                        <View style= {style.contenedorFlat}> 
+                            <FlatList 
+                            style= {style.flatlist}
+                            data= {this.state.posteos}
+                            keyExtractor= {(posteos) => posteos.id.toString()}
+                            renderItem= {({item})=> <Post dataPost={item}{...this.props} />}
+                            />
+                        </View> 
                     : 
                     <View> 
                         <Text>No tenes ninguna publicacion</Text>
                     </View> 
                     }
-                </View>
 
-                  <View style ={style.contenedor}>
-                      <TouchableOpacity style ={style.boton} onPress= {()=> this.props.route.params.logout()} >
+                    <TouchableOpacity style ={style.boton} onPress= {()=> this.props.route.params.logout()} >
                       <Text style ={style.textoBoton} > Cerrar Sesion </Text>
                     </TouchableOpacity> 
-                  </View>
-              </View>
+                </View>
+
+                  
+            </View>
           )
       }
 }
 
 const style = StyleSheet.create({
     boton:{
-       alignItems: 'center' 
+       alignItems: 'center' , 
     },
     textoBoton: {
         borderRadius: 4, 
@@ -102,6 +118,21 @@ const style = StyleSheet.create({
     }, 
     fondo:{
         backgroundColor: '#E2C5EB',
+    }, 
+    flatlist:{
+        height: 280, 
+        width: 480, 
+        backgroundColor: 'white', 
+        boxShadow: 'rgb(80 80 80) 0px 0px 9px 9px',
+    }, 
+    contenedorFlat:{
+        alignItems: 'center', 
+    }, 
+    texto: {
+        fontWeight: 'bold'
+    }, 
+    cuadroTexto:{
+        padding: 3
     }, 
      
 })

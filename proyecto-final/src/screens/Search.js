@@ -55,7 +55,7 @@ class Search extends Component {
         console.log(this.state.posteos);
         
         return(
-                <View >
+                <View style={style.contenedor}>
                     <Text style={style.texto}>Posteos del usuario: {this.state.email}</Text>
                     <View style={style.form}>
                         <TextInput 
@@ -73,13 +73,16 @@ class Search extends Component {
                             <Text><FontAwesome name="search" size={24} color="black" /></Text>
                         </TouchableOpacity>                         
                     </View> {
-                        this.state.posteos ?  
+                        this.state.posteos.length > 0 ?  
                      
-                    <FlatList 
-                        data={this.state.posteos}
-                        keyExtractor={post => post.id}
-                        renderItem = { ({item}) => <Post dataPost={item} {...this.props} />}
-                    /> 
+                    <View style={style.contenedorFlat} > 
+                        <FlatList 
+                            style={style.flatList}
+                            data={this.state.posteos}
+                            keyExtractor={post => post.id}
+                            renderItem = { ({item}) => <Post dataPost={item} {...this.props} />}
+                        /> 
+                    </View>     
                     : 
                     <View>
                     <Text>No hay resultados para tu búsqueda </Text>    
@@ -94,9 +97,8 @@ class Search extends Component {
 
 const style = StyleSheet.create({
     contenedor:{
-        flex:1,
-        padding:10,
         backgroundColor: '#E2C5EB',
+       
     },
     form:{
         flex:1,
@@ -112,7 +114,7 @@ const style = StyleSheet.create({
         marginBottom:8,
         width:'70%',
         marginBottom: 5,
-        lineHeight:100,
+        lineHeight: 10,
     },
     boton: {
         borderRadius: 2,
@@ -127,6 +129,17 @@ const style = StyleSheet.create({
     texto:{
         textAlign:'center',
         padding:'1%'
+    }, 
+    flatList:{
+        height: 200, 
+        width: 500, 
+        backgroundColor: 'white', 
+        boxShadow: 'rgb(80 80 80) 0px 0px 9px 9px',
+    }, 
+    contenedorFlat:{
+        alignItems: 'center', 
+        margin: 30, 
+        height: 300
     }
 })
 
