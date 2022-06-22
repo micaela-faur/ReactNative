@@ -21,7 +21,7 @@ class MyCamera extends Component{
             mostrarCamara: true,
             url: ''
         } 
-        this.metodosDeCamera= '' //preguntar  
+        this.metodosDeCamera= ''  
     }
     // apenas entras a la pag de la camaera te pide permisos, hace que salte una alerta de permitir acceder a la camara
       componentDidMount(){
@@ -33,7 +33,7 @@ class MyCamera extends Component{
       }
       // hay que obtener la uurl temporal para guardarla en el estado
       sacarFoto(){
-        this.metodosDeCamera.takePictureAsync() //preguntar y porque el photo
+        this.metodosDeCamera.takePictureAsync()  
         .then(photo => {
             this.setState({
                 url: photo.uri,
@@ -44,9 +44,9 @@ class MyCamera extends Component{
       // guardamos la url
       guardarFoto(){
         fetch(this.state.url)
-        .then(response => response.blob()) //preguuntar
+        .then(response => response.blob())  
         .then( image => {
-            const ref = storage.ref(`photos/${Date.now()}.jpg`); //preguntar
+            const ref = storage.ref(`photos/${Date.now()}.jpg`);  
             ref.put(image)
             .then(()=> {
                 ref.getDownloadURL()
