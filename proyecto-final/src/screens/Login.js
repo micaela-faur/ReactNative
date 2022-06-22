@@ -38,10 +38,10 @@ class Login extends Component{
                         secureTextEntry= {true}
                     /> 
 
-                    <TouchableOpacity style={style.boton} onPress={()=> this.props.route.params.login(this.state.email, this.state.password)} >
+                    <TouchableOpacity style={style.boton} onPress={()=> this.props.login(this.state.email, this.state.password)} >
                         <Text style={style.textoBoton}> Ingresar </Text>
                     </TouchableOpacity>
-
+                    <Text>El error es: {this.props.erroresLogin}</Text> 
                     <TouchableOpacity style={style.boton} onPress={()=> this.props.navigation.navigate('Register')} >
                         <Text style={style.textoBoton} > No tengo cuenta </Text>
                     </TouchableOpacity>

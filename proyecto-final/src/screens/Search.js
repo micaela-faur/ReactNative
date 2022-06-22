@@ -52,8 +52,7 @@ class Search extends Component {
 
 
     render(){
-        console.log(this.state.posteos);
-        
+        console.log(this.state.posteos); 
         return(
                 <View style={style.contenedor}>
                     <Text style={style.texto}>Posteos del usuario: {this.state.email}</Text>

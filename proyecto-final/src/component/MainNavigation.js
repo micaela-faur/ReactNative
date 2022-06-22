@@ -22,7 +22,8 @@ class MainNavigation extends Component{
         super(props);
         this.state={
             login: false, 
-            registerError: ''
+            registerError: '',
+            loginError:''
         }
     }
 
@@ -41,7 +42,10 @@ class MainNavigation extends Component{
         .then(response => this.setState({
             login: true
         }))
-        .catch(error => console.log(error))
+        .catch(error => {console.log(error.message)
+        this.setState({
+            loginError: error.message
+        })})
 
     }
 
@@ -98,14 +102,12 @@ class MainNavigation extends Component{
                     <Stack.Group>
                         <Stack.Screen 
                             name= 'Login'
-                            component= {Login}
                             options= {{headerShown: false}}
-                            initialParams= {{login: (mail,pass) => this.login(mail,pass)}}
+                            children= {(navigationProps) => <Login login={(mail,pass) => this.login(mail,pass) } erroresLogin= {this.state.loginError} {...navigationProps} />}
                         />
                         <Stack.Screen
                             name= 'Register'
                             options = {{headerShown: false}}
-                            
                             children= {(navigationProps) => <Register register={(mail,pass, userName) => this.register(mail,pass, userName) } errores= {this.state.registerError} {...navigationProps} />}
                         />
                     </Stack.Group>   
